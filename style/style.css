@@ -8,62 +8,27 @@ body{
     background-position: center;
     margin: 0%;
 }
-.menuList{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding-right: 50px;
-    align-items: center;
-}
 
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
 
-    background: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 1px;
-    
-    display: flex;
-    justify-content: space-between;
 
-}
 
 main{
-    margin-top: 100%;
+    margin-top: 80px;
+    background: linear-gradient(to bottom, white, rgba(0,0,0,0));
 }
 
-#title{
-    font-family: 'Courier New', Courier, monospace;
-    h1{
-        text-align: center;
-        font-size: 100px;
-        margin: 0%;
-    }
-    padding: 10px;
-}
+
 
 #welcome{
-    color: rgb(163, 255, 186);
+    padding: 50px;
+    color: rgb(0, 0, 0);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
 
-.borderImgButton{ 
-    border: 5px solid black;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
 
-.imgMenuNav{
-    width: 40px;
-}   
+
+
 
 
 footer{
