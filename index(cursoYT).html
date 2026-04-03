@@ -1,0 +1,149 @@
+<!--
+- Etiquetas: 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nombre de la pagina web</title> <!-- Nombre de la pagina web-->
+    <style>
+        table, th, td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <!--
+    Label 'table' permite crear tablas
+    -->
+    <table style="width: 500px;">
+        <thead>
+            <th style="width: 700px;">Gatitos</th>
+        </thead>
+        <tbody>
+            <!--
+            Label 'tr' (table row) permite crear filas
+            -->
+            <tr>
+                <!--
+                Label 'th' (table head) permite colocar cabezeras
+                -->
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Raza</th>
+            </tr>
+            <tr>
+                <!--
+                Label 'td' permite agregar texto estandar
+                -->
+                <td>Yeti</td>
+                <td>Blanco</td>
+                <td>Domestico</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td>Gatitos lindos</td>
+        </tfoot>
+    </table>
+
+    <!--
+    Label 'ul' crea una lista no ordenada
+    -->
+    <ul>
+        <li>Gatito 1</li>
+        <li>Gatito 2</li>
+        <li>Gatito 3</li>
+        <li>Gatito 4</li>
+    </ul>
+    <!--
+    Label 'ol' crea listas ordenadas
+    -->
+    <ol>
+        <!--
+        Label 'li' cra un elemento de la lista
+        property 'value' establece el valor de odnde empezara la lista
+        -->
+        <li value="10" style="list-style-type: georgian;">Gatito 1</li>
+        <li value="10" style="list-style-type: georgian;">Gatito 2</li>
+        <li value="10" style="list-style-type: georgian;">Gatito 3</li>
+        <li value="10" style="list-style-type: georgian;">Gatito 4</li>
+    </ol>
+
+    <!--
+    Label 'form' permite crear formularios donde se puede ingresar y enviar diferentes tipos de informacion
+    property 'action' permite guardar la informacion, por ejemplo, en una base de datos
+    property 'method' define el metodo con el cual se enviara la informacion
+    -->
+    <form action="/formularioDatos" method="post">
+        <!--
+        Label 'label' permite ingresar texto para indicarciones
+        -->
+        <label for="entradaText" style="background-color: aqua;" >Ingrese sus datos</label>
+        <!-- 
+        Label 'br' crea un salto de linea
+        -->
+        <br>
+        <!--
+        - Label 'input' permite ingresar datos por el usuario
+        - property 'id' permite poner un identificador a un label
+        - property 'style' permite aplicar diferentes estilos al elemento
+        - property 'name' permite definir el nombre que llevara la label (es indispensable)
+        - property 'placeholder' permite poner un texto como indicador de lo que se deberia colocar ahi
+        - porperty 'type' permite elegir el tipo de entrada del usuario
+        -->
+        <input id="entradaText" style="color:black" name="name" placeholder="Nombre(s)" type="text">
+        <br><br>
+        <input id="lasNames" name="lastNames" style="color: black;" placeholder="Apellido(s)"/>
+        <br><br>
+        <label>Comentario</label>
+        <br>
+        <!--
+        Label 'textarea' permite crear un cuadro de texto
+        property 'rows' establece el numero de filas que tendra el area de texto
+        property 'cols' establece el numero de columnas que tendra el area de texto
+        -->
+        <textarea rows="10" cols="30" id="comentary" placeholder="Ingrese su texto" name="inputTextDataUser"></textarea>
+        <input type="submit"/>
+        <!--
+        Label 'button' permite crear 3 tipos diferentes de boton (boton, reset, submit), ademas suele ser mas personalizable
+        -->
+        <button type="button">
+            Te gustan los gatitos?
+            <br><br>
+            <img src="/Muchos gatitos.jpeg" width="150" />
+        </button>
+    </form>
+    <!-- h(n) son encabezados para titulos (solo existen 6)-->
+    <h1>Titulo de la pagina web</h1>
+    <h2>Subtitulo de la pagina web</h2>
+    <h3>Sub*2 titulo</h3>
+    <h4>Sub*3 titulo</h4>
+    <h5>Sub*4 titulo</h5>
+    <h6>Sub*5 titulo</h6>
+    <p>Creacion de parrafos</p> <!-- Label 'p' permite crear parrafos de tecto -->
+    <p>Parrafo en nueva linea</p>
+    <hr> <!-- Label 'hr' permite crear una separacion dentro de la pagina -->
+    <h1>Titulo 2</h1>
+    <p>Parrafo 2</p>
+    <!-- 
+    - Label 'span' permite referenciar/seleccionar una parte de texto
+    - Label 'br' permite realizar saltos de linea en el texto
+    -->
+    <p>Mucho texto: <span style="color:rgb(255, 0, 200)" >676767676767676767676767676<br>767676767676767676767676</span></p> 
+    <!-- 
+    - Label 'a' permite hacer un hiperviinculo 
+    - atributte 'href' permite redirigir al usuario al enlace o recurso introducido (hipervinculo)
+    - atributte 'target' permite elegir donde se abrira el hipervinvulo ("_blank" permite abrir el enlace en otra pesta�a)
+    -->
+    <a target="_blank" href="https://www.mercadolibre.com.mx/">No entres UwU<br></a> 
+    <!--
+    - Label 'img' permite hacer uso de imagenes
+    - property 'src' permite mostrar la imagen (caso 1: imagen desde url y caso 2: imagen desde el mismo proyecto)
+    - property 'weight' permite modificar el tamanio en lo ancho y 'height' en lo alto
+    -->
+    <p>Caso 1</p>
+    <img src="https://content.elmueble.com/medio/2023/05/22/gatitos_1f740045_230522123911_1000x667.jpg" width="200"/>
+    <p>Caso 2</p>
+    <img src="Muchos gatitos.jpeg" height="133"/>
+</body>
+</html>
