@@ -3,34 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <title>My Money</title>
-    <link rel="icon" href="src/icons/attach_money_green_24dpx.png"/>
+    <link rel="icon" href="src/icons/attach_money_green_24dpx.png" />
     <link rel="stylesheet" href="style/style.css" />
-    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/header.css" />
+
+    <!-- Scripts -->
+    <script src="script/inputGast.js" defer></script>
+  </head>
   <body>
     <header>
-        <h1 id="title">My Money</h1>
-        <nav class="menuList">
-          <!-- Navegacion del sitio -->
-          <div class="borderImgButton">
-            <a href="index.html" title="Inicio">
-              <img class="imgMenuNav" src="src/icons/pagina-de-inicio.png"
-            /></a>
-          </div>
-          <div class="borderImgButton">
-            <a href="registerGast.html" title="Registro de gastos">
-              <img class="imgMenuNav" src="src/icons/save-money_8016580.png"
-            /></a>
-          </div>
-          <div class="borderImgButton">
-            <a href="registerTarj.html" title="Registro de tarjetas">
-              <img class="imgMenuNav" src="src/icons/add_card_512dp.png"
-            /></a>
-          </div>
-        </nav>
+      <h1 id="title">My Money</h1>
+      <nav class="menuList">
+        <!-- Navegacion del sitio -->
+        <div class="borderImgButton">
+          <a href="index.html" title="Inicio">
+            <img class="imgMenuNav" src="src/icons/pagina-de-inicio.png"
+          /></a>
+        </div>
+        <div class="borderImgButton">
+          <a href="registerGast.html" title="Registro de gastos">
+            <img class="imgMenuNav" src="src/icons/save-money_8016580.png"
+          /></a>
+        </div>
+        <div class="borderImgButton">
+          <a href="registerTarj.html" title="Registro de tarjetas">
+            <img class="imgMenuNav" src="src/icons/add_card_512dp.png"
+          /></a>
+        </div>
+      </nav>
     </header>
     <main>
       <section>
         <h2 id="welcome">Registro de gastos</h2>
+        <form>
+          <div>
+            <p>Ingresa monto gastado:</p>
+            <input
+              id="montGast"
+              type="number"
+              placeholder="Ingrese monto gastado"
+              min="0"
+              step="0.01"
+            />
+            <p>Ingresa descripcion del gasto:</p>
+            <input type="text" placeholder="Descripcion" />
+            <p>Seleccione tarjeta donde se realizo el gasto:</p>
+            <select>
+              Tarjetas
+            </select>
+            <p>Seleccione categoria de gasto:</p>
+            <select>
+              Categorias
+            </select>
+          </div>
+          <button onclick="ingGast()">Registrar gasto</button>
+          <p id="totalGasto"></p>
+        </form>
       </section>
     </main>
     <footer>Pie de paginaa</footer>
