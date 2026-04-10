@@ -37,35 +37,42 @@
     <main>
       <section id="section">
         <h2 id="welcome">Registro de gastos</h2>
-        <form id="dataRegister" onsubmit="return false;"> <!-- = Aqui se detiene el envio del formulario -->
-          <div class="form">
-            <p>Ingresa monto gastado:</p>
-            <input
-              id="montGast"
-              type="number"
-              placeholder="Ingrese monto gastado"
-              min="0"
-              step="0.01"
-            />
-            <p>Ingresa descripcion del gasto:</p>
-            <input id="description" type="text" placeholder="Descripcion" />
-            <p>Seleccione tarjeta donde se realizo el gasto:</p>
-            <select id="cards">
-              <!-- Tarjetas -->
-              <option value="bbva">BBVA</option>
-              <option value="stori">Stori</option>
-            </select>
-            <p>Seleccione categoria de gasto:</p>
-            <select id="categories">
-              <!-- Catergorias -->
-              <option value="food">Comida</option>
-              <option value="health">Salud</option>
-            </select>
+        <div id="regGastResGast">
+          <form id="dataRegister" onsubmit="return false;">
+            <!-- = Aqui se detiene el envio del formulario -->
+            <div class="form">
+              <p>Ingresa monto gastado:</p>
+              <input
+                id="montGast"
+                type="number"
+                placeholder="Ingrese monto gastado"
+                min="0"
+                step="0.01"
+              />
+              <p>Ingresa descripcion del gasto:</p>
+              <input id="description" type="text" placeholder="Descripcion" />
+              <p>Seleccione tarjeta donde se realizo el gasto:</p>
+              <select id="cards">
+                <!-- Tarjetas -->
+                <option value="bbva">BBVA</option>
+                <option value="stori">Stori</option>
+              </select>
+              <p>Seleccione categoria de gasto:</p>
+              <select id="categories">
+                <!-- Catergorias -->
+                <option value="food">Comida</option>
+                <option value="health">Salud</option>
+              </select>
+            </div>
+            <button id="submit" type="submit" onclick="regGasto()">
+              Registrar gasto
+            </button>
+          </form>
+          <div id="resumeExpensives">
+            <h3>Total gastado $ <span id="totalExpensive">0</span></h3>
+            <ul id="allExpensives"></ul>
           </div>
-          <button id="submit" type="submit" onclick="regGasto()">
-            Registrar gasto
-          </button>
-        </form>
+        </div>
       </section>
     </main>
     <footer>Pie de paginaa</footer>
