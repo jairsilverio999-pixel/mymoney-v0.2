@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="style/header.css" />
     <link rel="stylesheet" href="style/regGast.css" />
     <!-- Scripts -->
-    <script src="script/inputGast.js" defer></script>
+    <script src="script/app.js" defer></script>
   </head>
   <body>
     <header>
-      <h1 id="title"><img src="src/img/logo-my-money-red.png" alt="Name page: My Money"></h1>
+      <h1 id="title">
+        <img src="src/img/logo-my-money-red.png" alt="Name page: My Money" />
+      </h1>
       <nav class="menuList">
         <!-- Navegacion del sitio -->
         <div class="borderImgButton">
@@ -33,9 +35,9 @@
       </nav>
     </header>
     <main>
-      <section>
+      <section id="section">
         <h2 id="welcome">Registro de gastos</h2>
-        <form id="dataRegister">
+        <form id="dataRegister" onsubmit="return false;"> <!-- = Aqui se detiene el envio del formulario -->
           <div class="form">
             <p>Ingresa monto gastado:</p>
             <input
@@ -50,22 +52,19 @@
             <p>Seleccione tarjeta donde se realizo el gasto:</p>
             <select id="cards">
               <!-- Tarjetas -->
-              <optgroup label="Tarjetas">
-                <option value="bbva">BBVA</option>
-                <option value="stori">Stori</option>
-              </optgroup>
+              <option value="bbva">BBVA</option>
+              <option value="stori">Stori</option>
             </select>
             <p>Seleccione categoria de gasto:</p>
             <select id="categories">
               <!-- Catergorias -->
-              <optgroup label="Categorias">
-                <option value="food">Comida</option>
-                <option value="health">Salud</option>
-              </optgroup>
+              <option value="food">Comida</option>
+              <option value="health">Salud</option>
             </select>
           </div>
-          <button id="submit" type="submit" onclick="ingGast()">Registrar gasto</button>
-          <p id="totalGasto"></p>
+          <button id="submit" type="submit" onclick="regGasto()">
+            Registrar gasto
+          </button>
         </form>
       </section>
     </main>
