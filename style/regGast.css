@@ -30,6 +30,23 @@
     background: linear-gradient(to bottom, rgb(121, 209, 99), rgb(255, 255, 255))
 }
 
+#reset{
+    padding: 5px;
+    margin: 50px;
+    justify-self: center;
+    display: flex;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, rgb(209, 99, 99), rgb(255, 255, 255));
+    
+}
+
+#reset:active{
+    background-color: rgb(42, 165, 48);
+    border: unset;
+}
+
 #regGastResGast{
     display: flex;
     justify-content: space-evenly;

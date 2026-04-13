@@ -3,37 +3,127 @@
   <head>
     <meta charset="UTF-8" />
     <title>My Money</title>
-    <link rel="icon" href="src/icons/attach_money_green_24dpx.png" />
+    <link rel="icon" href="src/icons/logo-my-money-red.png" />
     <link rel="stylesheet" href="style/style.css" />
-    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/header.css" />
+    <!-- Script -->
+    <script src="script/app.js" defer></script>
   </head>
   <body>
     <header>
-        <h1 id="title"><img src="src/img/logo-my-money-red.png" alt="Name page: My Money"></h1>
-        <nav class="menuList">
-          <!-- Navegacion del sitio -->
-          <div class="borderImgButton">
-            <a href="index.html" title="Inicio">
-              <img class="imgMenuNav" src="src/icons/pagina-de-inicio.png"
-            /></a>
-          </div>
-          <div class="borderImgButton">
-            <a href="registerGast.html" title="Registro de gastos">
-              <img class="imgMenuNav" src="src/icons/save-money_8016580.png"
-            /></a>
-          </div>
-          <div class="borderImgButton">
-            <a href="registerTarj.html" title="Registro de tarjetas">
-              <img class="imgMenuNav" src="src/icons/add_card_512dp.png"
-            /></a>
-          </div>
-        </nav>
+      <h1 id="title">
+        <img src="src/img/logo-my-money-red.png" alt="Name page: My Money" />
+      </h1>
+      <nav class="menuList">
+        <!-- Navegacion del sitio -->
+        <div class="borderImgButton">
+          <a href="#">
+            <img
+              alt="Inicio"
+              class="imgMenuNav"
+              src="src/icons/pagina-de-inicio.png"
+              title="Inicio"
+              onclick="changeScreen('screenHome')"
+          /></a>
+        </div>
+        <div class="borderImgButton">
+          <a href="#">
+            <img
+              alt="Registro de gastos"
+              class="imgMenuNav"
+              src="src/icons/save-money_8016580.png"
+              title="Registro de gastos"
+              onclick="changeScreen('screenExpensives')"
+          /></a>
+        </div>
+        <div class="borderImgButton">
+          <a href="#">
+            <img
+              alt="Registro de tarjetas"
+              class="imgMenuNav"
+              src="src/icons/add_card_512dp.png"
+              title="Registro de tarjetas"
+              onclick="changeScreen('screenRegisterCards')"
+          /></a>
+        </div>
+      </nav>
     </header>
-    <main>
-      <section>
-        <h2 id="welcome">Tu auxiliar en controlar tus finanzas</h2>
+    <!-- Inicio -->
+    <div id="screenHome" class="screen">
+      <main>
+        <section>
+          <h1 id="welcome">Tu auxiliar en controlar tus finanzas</h1>
+        </section>
+      </main>
+    </div>
+    <!-- Registro de gastos -->
+    <div id="screenExpensives" class="screen hide">
+      <section id="section">
+        <h1 id="welcome">Registro de gastos</h1>
+        <div id="regGastResGast">
+          <form id="dataRegister">
+            <!-- = Aqui se detiene el envio del formulario -->
+            <div class="form">
+              <!-- Captura de gastos -->
+              <p>Ingresa monto gastado:</p>
+              <input
+                id="montGast"
+                type="number"
+                placeholder="Ingrese monto gastado"
+                min="0"
+                step="0.01"
+              />
+              <!-- Descripcion -->
+              <p>Ingresa descripcion del gasto:</p>
+              <input id="description" type="text" placeholder="Descripcion" />
+              <p>Seleccione tarjeta donde se realizo el gasto:</p>
+              <select id="cards">
+                <!-- Tarjetas -->
+                <option value="bbva">BBVA</option>
+                <option value="stori">Stori</option>
+              </select>
+              <p>Seleccione categoria de gasto:</p>
+              <select id="categories">
+                <!-- Catergorias -->
+                <option value="food">Comida</option>
+                <option value="health">Salud</option>
+              </select>
+            </div>
+            <button id="submit" type="submit" onclick="regGasto()">
+              Registrar gasto
+            </button>
+          </form>
+          <div id="resumeExpensives">
+            <h3>Total gastado $ <span id="totalExpensive">0</span></h3>
+            <ul id="allExpensives"></ul>
+            <button id="reset">Borrar gastos guardados</button>
+          </div>
+        </div>
       </section>
-    </main>
+    </div>
+    <!-- Registro de tarjetas-->
+    <div id="screenRegisterCards" class="screen hide">
+      <section>
+        <h1 id="welcome">Registro de tarjetas</h1>
+        <form>
+          <div class="form">
+            <p>Alias de la tarjeta</p>
+            <input type="text" />
+            <p>Banco</p>
+            <select name="" id="">
+              <option value="bbva">BBVA</option>
+            </select>
+            <p>Numero de cuenta o clave interbancaria</p>
+            <input type="number" name="" id="" />
+            <p>Tipo de tarjeta</p>
+            <select name="" id="">
+              <option value="debit">Debito</option>
+            </select>
+          </div>
+          <button id="submit" type="submit">Registrar tarjeta</button>
+        </form>
+      </section>
+    </div>
     <footer>Pie de paginaa</footer>
   </body>
 </html>
