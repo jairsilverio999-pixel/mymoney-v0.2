@@ -9,7 +9,7 @@ render()
 
 form.addEventListener('submit', function(e){ // guarda los gastos en localstore
     e.defaultPrevented
-    alert('Formulario detenido')
+    alert('Gasto registrado con exito')
     let id = Date.now()
     let expenditure = parseFloat(document.getElementById('montGast').value)
     console.log(expenditure)
