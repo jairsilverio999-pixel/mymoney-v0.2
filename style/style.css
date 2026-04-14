@@ -76,8 +76,26 @@ body{
     display: none;
 }
 
+#allExpensives{
+    height: 300px;
+    background: white;
+    list-style: none;
+    justify-content: flex-start;
+    margin-left: 0;
+    padding: 0%;
+    width: 300;
+    font-family: "Poppins", sans-serif;
+}
 
+#totalExpensiveHead{
+    font-family: "Poppins", sans-serif;
+    color: aliceblue;
+}
 
+#resumeExpensive{
+    display: flex;
+    justify-content: flex-start;
+}
 
 footer{
     text-align: center;

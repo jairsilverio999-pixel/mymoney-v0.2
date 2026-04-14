@@ -89,12 +89,13 @@
                 <option value="health">Salud</option>
               </select>
             </div>
-            <button id="submit" type="submit" onclick="regGasto()">
-              Registrar gasto
-            </button>
+            <button id="submit" type="submit">Registrar gasto</button>
           </form>
           <div id="resumeExpensives">
-            <h3>Total gastado $ <span id="totalExpensive">0</span></h3>
+            <h3 id="totalExpensiveHead">
+              Total gastado $
+              <span id="totalExpensive">0</span>
+            </h3>
             <ul id="allExpensives"></ul>
             <button id="reset">Borrar gastos guardados</button>
           </div>
