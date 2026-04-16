@@ -49,7 +49,7 @@
       </nav>
     </header>
     <!-- Inicio -->
-    <div id="screenHome" class="screen">
+    <div id="screenHome" class="screen hide">
       <main>
         <section>
           <h1 id="welcome">Tu auxiliar en controlar tus finanzas</h1>
@@ -79,7 +79,6 @@
               <p>Seleccione tarjeta donde se realizo el gasto:</p>
               <select id="cards">
                 <!-- Tarjetas -->
-                <option value="bbva">BBVA</option>
                 <option value="stori">Stori</option>
               </select>
               <p>Seleccione categoria de gasto:</p>
@@ -89,8 +88,9 @@
                 <option value="health">Salud</option>
               </select>
             </div>
-            <button id="submit" type="submit">Registrar gasto</button>
+            <button id="submit" type="submit" class="btnSubmit">Registrar gasto</button>
           </form>
+          <!-- visualizacion de gastos -->
           <div id="resumeExpensives">
             <h3 id="totalExpensiveHead">
               Total gastado $
@@ -103,25 +103,25 @@
       </section>
     </div>
     <!-- Registro de tarjetas-->
-    <div id="screenRegisterCards" class="screen hide">
+    <div id="screenRegisterCards" class="screen">
       <section>
         <h1 id="welcome">Registro de tarjetas</h1>
-        <form>
+        <form id="cardRegister">
           <div class="form">
             <p>Alias de la tarjeta</p>
-            <input type="text" />
+            <input type="text" id="aliasCard" />
             <p>Banco</p>
-            <select name="" id="">
+            <select id="bank">
               <option value="bbva">BBVA</option>
             </select>
-            <p>Numero de cuenta o clave interbancaria</p>
-            <input type="number" name="" id="" />
+            <p>Numero de tarjeta</p>
+            <input type="text" id="noCard" minlength="16" maxlength="16" placeholder="Maximo 16 digitos"/>
             <p>Tipo de tarjeta</p>
-            <select name="" id="">
+            <select id="typeCard">
               <option value="debit">Debito</option>
             </select>
           </div>
-          <button id="submit" type="submit">Registrar tarjeta</button>
+          <button id="regCard" type="submit" class="btnSubmit">Registrar tarjeta</button>
         </form>
       </section>
     </div>

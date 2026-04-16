@@ -2,14 +2,15 @@ const form = document.getElementById('dataRegister')
 const lista = document.getElementById('allExpensives')
 const totalExpensives = document.getElementById('totalExpensive')
 const reset = document.getElementById('reset')
+const formCards = document.getElementById('cardRegister')
 
 let gastos = JSON.parse(localStorage.getItem('gasto')) || []
-let id = typeof gastos.id
+let cards = JSON.parse(localStorage.getItem('card'))  || []
 render()
 
-form.addEventListener('submit', function(e){ // guarda los gastos en localstore
-    e.defaultPrevented
-    alert('Gasto registrado con exito')
+// guarda los gastos en localstore
+form.addEventListener('submit', function(e){ 
+    e.defaultPrevented()
     let id = Date.now()
     let expenditure = parseFloat(document.getElementById('montGast').value)
     console.log(expenditure)
@@ -24,10 +25,11 @@ form.addEventListener('submit', function(e){ // guarda los gastos en localstore
     console.log(gastos)
     render()
     form.reset()
-
+    alert('Gasto registrado con exito')
 })
 
-function render() { //Actualiza la lista de gastos y los agrega en forma de lista
+//Actualiza la lista de gastos y los agrega en forma de lista
+function render() { 
     lista.innerHTML = ''
     let gastoTotal = 0
     gastos.forEach((gasto) => {
@@ -74,5 +76,25 @@ function changeScreen(id){
     document.getElementById(id).classList.remove('hide')
 }
 
-console.log(id)
+formCards.addEventListener("submit", function(e){
+    e.preventDefault()
+    let id = Date.now()
+    let alias = document.getElementById('aliasCard').value
+    let bank = document.getElementById('bank').value
+    let noCard = document.getElementById('noCard')
+    noCard.addEventListener("input", function(){
+        if (this.value.lenght > 16) {
+            this.value = this.value.slice(0 , 16)
+        }
+    })
+    noCard = Number(noCard.value)
+    if (isNaN(noCard)) {
+        alert('Ingrese un numero valido')
+        return
+    }
+    console.log(noCard)
+    console.log(e.defaultPrevented)
+    alert('Tarjeta registrada correctamente')
+})
+
 

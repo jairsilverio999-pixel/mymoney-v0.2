@@ -20,7 +20,7 @@
 
 }
 
-#submit{
+.btnSubmit{
     padding: 20px;
     margin: 50px;
     justify-self: center;
@@ -115,4 +115,9 @@ footer{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     bottom: 0;
     position: fixed;
+}
+
+#regCard{
+    display: flex;
+    justify-content: center;
 }
