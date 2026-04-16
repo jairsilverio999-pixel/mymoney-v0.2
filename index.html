@@ -88,7 +88,9 @@
                 <option value="health">Salud</option>
               </select>
             </div>
-            <button id="submit" type="submit" class="btnSubmit">Registrar gasto</button>
+            <button id="submit" type="submit" class="btnSubmit">
+              Registrar gasto
+            </button>
           </form>
           <!-- visualizacion de gastos -->
           <div id="resumeExpensives">
@@ -109,19 +111,34 @@
         <form id="cardRegister">
           <div class="form">
             <p>Alias de la tarjeta</p>
-            <input type="text" id="aliasCard" />
+            <input type="text" id="aliasCard" placeholder="Ingrese alias o nombre"/>
             <p>Banco</p>
             <select id="bank">
-              <option value="bbva">BBVA</option>
+              <option value="BBVA">BBVA</option>
+              <option value="Mercado Pago">Mercado Pago</option>
+              <option value="Santander">Santander</option>
+              <option value="Stori">Stori</option>
+              <option value="Coppel">Coppel</option>
+              <option value="NU">NU</option>
             </select>
             <p>Numero de tarjeta</p>
-            <input type="text" id="noCard" minlength="16" maxlength="16" placeholder="Maximo 16 digitos"/>
+            <input
+              type="text"
+              id="noCard"
+              minlength="16"
+              maxlength="16"
+              placeholder="Maximo 16 digitos"
+            />
             <p>Tipo de tarjeta</p>
             <select id="typeCard">
-              <option value="debit">Debito</option>
+              <option value="Debito">Debito</option>
+              <option value="Credito">Credito</option>
+              <option value="Vales">Vales</option>
             </select>
           </div>
-          <button id="regCard" type="submit" class="btnSubmit">Registrar tarjeta</button>
+          <button id="regCard" type="submit" class="btnSubmit">
+            Registrar tarjeta
+          </button>
         </form>
       </section>
     </div>

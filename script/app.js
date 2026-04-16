@@ -36,7 +36,7 @@ function render() {
         let li = document.createElement('li')
         li.textContent = `$${gasto.expenditure}, Descripcion:  ${gasto.description}, Origen: ${gasto.card}, Categoria: ${gasto.categorie}`
         let btn = document.createElement('button')
-        btn.textContent = 'Eliminar gasto'
+        btn.textContent = 'Eliminar'
         btn.addEventListener('click', function () {
             deleteExpensive(gasto.id)
         })
@@ -76,23 +76,23 @@ function changeScreen(id){
     document.getElementById(id).classList.remove('hide')
 }
 
+// registro tarjetas
 formCards.addEventListener("submit", function(e){
     e.preventDefault()
     let id = Date.now()
     let alias = document.getElementById('aliasCard').value
     let bank = document.getElementById('bank').value
-    let noCard = document.getElementById('noCard')
-    noCard.addEventListener("input", function(){
-        if (this.value.lenght > 16) {
-            this.value = this.value.slice(0 , 16)
-        }
-    })
-    noCard = Number(noCard.value)
-    if (isNaN(noCard)) {
-        alert('Ingrese un numero valido')
+    let noCard = document.getElementById('noCard').value
+    // valida que sean numeros y que sean 16 digitos
+    if (!/^\d{16}$/.test(noCard)) {
+        alert('Numero de tarjeta deben ser 16 digitos numericos')
         return
     }
-    console.log(noCard)
+    let typeCard = document.getElementById('typeCard').value
+    cards.push({id, alias, bank, noCard, typeCard})
+    localStorage.setItem('card', JSON.stringify(cards))
+    formCards.reset()
+    console.log(cards)
     console.log(e.defaultPrevented)
     alert('Tarjeta registrada correctamente')
 })

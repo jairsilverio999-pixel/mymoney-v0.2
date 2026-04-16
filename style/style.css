@@ -16,8 +16,6 @@
         color: aliceblue;
         box-shadow: 20px, black;
     }
-
-
 }
 
 .btnSubmit{
@@ -120,4 +118,8 @@ footer{
 #regCard{
     display: flex;
     justify-content: center;
+}
+
+input{
+    text-align: center;
 }
