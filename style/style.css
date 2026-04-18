@@ -46,7 +46,7 @@
     border: unset;
 }
 
-#regGastResGast{
+.divideDivs{
     display: flex;
     justify-content: space-evenly;
 }
@@ -74,7 +74,7 @@ body{
     display: none;
 }
 
-#allExpensives{
+.listData{
     height: 300px;
     background: white;
     list-style: none;
@@ -122,4 +122,11 @@ footer{
 
 input{
     text-align: center;
+    border-radius: 10px;
+
+}
+
+select{
+    text-align: center;
+    border-radius: 10px;
 }

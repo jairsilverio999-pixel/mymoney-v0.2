@@ -3,14 +3,18 @@ const lista = document.getElementById('allExpensives')
 const totalExpensives = document.getElementById('totalExpensive')
 const reset = document.getElementById('reset')
 const formCards = document.getElementById('cardRegister')
+const selectCards = document.getElementById('cards') 
+const listCardsSaved = document.getElementById('listCardsSaved')
 
 let gastos = JSON.parse(localStorage.getItem('gasto')) || []
 let cards = JSON.parse(localStorage.getItem('card'))  || []
 render()
+menuBanks()
+renderCards()
 
 // guarda los gastos en localstore
 form.addEventListener('submit', function(e){ 
-    e.defaultPrevented()
+    e.preventDefault()
     let id = Date.now()
     let expenditure = parseFloat(document.getElementById('montGast').value)
     console.log(expenditure)
@@ -42,7 +46,6 @@ function render() {
         })
         li.appendChild(btn)
         lista.appendChild(li)
-        
         gastoTotal += gasto.expenditure
     });
     totalExpensives.textContent = gastoTotal
@@ -51,7 +54,6 @@ function render() {
 //borrar gasto por id
 function deleteExpensive(id) {
     gastos = gastos.filter(function (gasto){
-        console.log(gasto.id)
         return gasto.id !== id
     })
     localStorage.setItem('gasto', JSON.stringify(gastos))
@@ -91,10 +93,47 @@ formCards.addEventListener("submit", function(e){
     let typeCard = document.getElementById('typeCard').value
     cards.push({id, alias, bank, noCard, typeCard})
     localStorage.setItem('card', JSON.stringify(cards))
+    renderCards()
+    menuBanks()
     formCards.reset()
-    console.log(cards)
-    console.log(e.defaultPrevented)
     alert('Tarjeta registrada correctamente')
 })
 
+// agrega opciones al menu de registro de gastos
+function menuBanks() {
+    selectCards.innerHTML = ''
+    cards.forEach((card)=>{
+        let option = document.createElement('option')
+        option.value = card.alias
+        option.textContent = `${card.alias} (${card.noCard.slice(-4)})`
+        selectCards.appendChild(option)
+    })
 
+
+}
+
+// actualiza lista de tarjetas y los agrega como lista
+function renderCards() { 
+    listCardsSaved.innerHTML = ''
+    cards.forEach((card) => {
+        let li = document.createElement('li')
+        li.textContent = `Alias:${card.alias}, Banco:  ${card.bank}, No. Tarjeta: **** ${card.noCard.slice(-4)}, Tipo: ${card.typeCard}`
+        let btn = document.createElement('button')
+        btn.textContent = 'Eliminar'
+        btn.addEventListener('click', function () {
+            deleteCard(card.id)
+        })
+        li.appendChild(btn)
+        listCardsSaved.appendChild(li)
+    });
+}
+
+// borrar tarjeta por id
+function deleteCard(id) {
+    cards = cards.filter(function (card){
+        return card.id !== id
+    })
+    localStorage.setItem('card', JSON.stringify(cards))
+    renderCards()
+    menuBanks()
+}
