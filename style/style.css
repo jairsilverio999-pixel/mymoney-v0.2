@@ -46,10 +46,6 @@
     border: unset;
 }
 
-.divideDivs{
-    display: flex;
-    justify-content: space-evenly;
-}
 
 body{
     background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)), url(../src/img/moneyPlant.jpg);
@@ -79,11 +75,12 @@ body{
     background: white;
     list-style: none;
     padding-left: 10px;
-    width: 300;
+    width: 600px;
     font-family: "Poppins", sans-serif;
     overflow-y: auto;
+    overflow-x: auto;
     border-radius: 10px;
-    
+    justify-self: center;
     li{
         display: flex;
         justify-content: space-between;
@@ -98,9 +95,10 @@ body{
     }
 }
 
-#totalExpensiveHead{
+.headSubtitle{
     font-family: "Poppins", sans-serif;
     color: aliceblue;
+    justify-self: center;
 }
 
 #resumeExpensive{
