@@ -10,7 +10,7 @@ let gastos = JSON.parse(localStorage.getItem('gasto')) || []
 let cards = JSON.parse(localStorage.getItem('card'))  || []
 render()
 menuBanks()
-renderCards()
+createList(cards, listCardsSaved)
 
 // guarda los gastos en localstore
 form.addEventListener('submit', function(e){ 
@@ -93,7 +93,7 @@ formCards.addEventListener("submit", function(e){
     let typeCard = document.getElementById('typeCard').value
     cards.push({id, alias, bank, noCard, typeCard})
     localStorage.setItem('card', JSON.stringify(cards))
-    renderCards()
+    createList(cards, listCardsSaved)
     menuBanks()
     formCards.reset()
     alert('Tarjeta registrada correctamente')
@@ -113,6 +113,7 @@ function menuBanks() {
 }
 
 // actualiza lista de tarjetas y los agrega como lista
+/*
 function renderCards() { 
     listCardsSaved.innerHTML = ''
     cards.forEach((card) => {
@@ -127,13 +128,34 @@ function renderCards() {
         listCardsSaved.appendChild(li)
     });
 }
-
+*/
+createList(cards, listCardsSaved)
 // borrar tarjeta por id
 function deleteCard(id) {
     cards = cards.filter(function (card){
         return card.id !== id
     })
     localStorage.setItem('card', JSON.stringify(cards))
-    renderCards()
+    renderCards() /////////////////////////////////////////////
     menuBanks()
+}
+
+// funcion para crear listas dinamicas
+function createList(saveInLocalstore, list){
+    list.innerHTML = ''
+    saveInLocalstore.forEach(obj => {
+        let li = document.createElement('li')
+        let valuesList = ""
+        for (key in obj){
+            valuesList += `${obj[key]} - `
+        }
+        li.textContent = valuesList.slice(0 , -3)
+        let btn = document.createElement('button')
+        btn.textContent = 'Eliminar'
+        btn.addEventListener('click', function () {
+            deleteCard(obj.id)
+        })
+        li.appendChild(btn)
+        list.appendChild(li)
+    });
 }
