@@ -34,20 +34,12 @@ form.addEventListener('submit', function(e){
 
 //Actualiza la lista de gastos y los agrega en forma de lista
 function render() { 
-    lista.innerHTML = ''
     let gastoTotal = 0
-    gastos.forEach((gasto) => {
-        let li = document.createElement('li')
-        li.textContent = `$${gasto.expenditure}, Descripcion:  ${gasto.description}, Origen: ${gasto.card}, Categoria: ${gasto.categorie}`
-        let btn = document.createElement('button')
-        btn.textContent = 'Eliminar'
-        btn.addEventListener('click', function () {
-            deleteExpensive(gasto.id)
-        })
-        li.appendChild(btn)
-        lista.appendChild(li)
+    lista.innerHTML = ''
+    createList(gastos, lista)
+    gastos.forEach(gasto =>{
         gastoTotal += gasto.expenditure
-    });
+    })
     totalExpensives.textContent = gastoTotal
 }
 
@@ -105,31 +97,14 @@ function menuBanks() {
     cards.forEach((card)=>{
         let option = document.createElement('option')
         option.value = card.alias
-        option.textContent = `${card.alias} (${card.noCard.slice(-4)})`
+        option.textContent = `${card.alias} (**** ${card.noCard.slice(-4)})`
         selectCards.appendChild(option)
     })
-
-
 }
 
 // actualiza lista de tarjetas y los agrega como lista
-/*
-function renderCards() { 
-    listCardsSaved.innerHTML = ''
-    cards.forEach((card) => {
-        let li = document.createElement('li')
-        li.textContent = `Alias:${card.alias}, Banco:  ${card.bank}, No. Tarjeta: **** ${card.noCard.slice(-4)}, Tipo: ${card.typeCard}`
-        let btn = document.createElement('button')
-        btn.textContent = 'Eliminar'
-        btn.addEventListener('click', function () {
-            deleteCard(card.id)
-        })
-        li.appendChild(btn)
-        listCardsSaved.appendChild(li)
-    });
-}
-*/
 createList(cards, listCardsSaved)
+
 // borrar tarjeta por id
 function deleteCard(id) {
     cards = cards.filter(function (card){
@@ -147,6 +122,13 @@ function createList(saveInLocalstore, list){
         let li = document.createElement('li')
         let valuesList = ""
         for (key in obj){
+            if (key === 'id') {
+                continue
+            }
+            if (key === 'expenditure') {
+                valuesList += `$${obj[key]} - `
+                continue
+            }
             valuesList += `${obj[key]} - `
         }
         li.textContent = valuesList.slice(0 , -3)

@@ -12,6 +12,7 @@
 
   </head>
   <body>
+    <!-- Menu de navegacion y logo-->
     <header>
       <h1 id="title">
         <img src="src/img/logo-my-money-red.png" alt="Name page: My Money" />
@@ -23,7 +24,7 @@
             <img
               alt="Inicio"
               class="imgMenuNav"
-              src="src/icons/pagina-de-inicio.png"
+              src="src/icons/home.svg"
               title="Inicio"
               onclick="changeScreen('screenHome')"
           /></a>
@@ -33,7 +34,7 @@
             <img
               alt="Registro de gastos"
               class="imgMenuNav"
-              src="src/icons/save-money_8016580.png"
+              src="src/icons/attachMoney.svg"
               title="Registro de gastos"
               onclick="changeScreen('screenExpensives')"
           /></a>
@@ -43,15 +44,25 @@
             <img
               alt="Registro de tarjetas"
               class="imgMenuNav"
-              src="src/icons/add_card_512dp.png"
+              src="src/icons/addCard.svg"
               title="Registro de tarjetas"
               onclick="changeScreen('screenRegisterCards')"
+          /></a>
+        </div>
+        <div class="borderImgButton">
+          <a href="#">
+            <img
+              alt="Aniadir categoria"
+              class="imgMenuNav"
+              src="src/icons/categories.svg"
+              title="Aniadir categoria"
+              onclick="changeScreen('screenAddCategorie')"
           /></a>
         </div>
       </nav>
     </header>
     <!-- Inicio -->
-    <div id="screenHome" class="screen hide">
+    <div id="screenHome" class="screen">
       <main>
         <section>
           <h1 id="welcome">Tu auxiliar en controlar tus finanzas</h1>
@@ -105,7 +116,7 @@
       </section>
     </div>
     <!-- Registro de tarjetas-->
-    <div id="screenRegisterCards" class="screen">
+    <div id="screenRegisterCards" class="screen hide">
       <section>
         <h1 id="welcome">Registro de tarjetas</h1>
         <div class="divideDivs">
@@ -152,6 +163,9 @@
           </div>
         </div>
       </section>
+    </div>
+    <div id="screenAddCategorie" class="scree hide">
+
     </div>
     <footer>Pie de paginaa</footer>
   </body>
