@@ -128,3 +128,36 @@ select{
     text-align: center;
     border-radius: 10px;
 }
+
+.footer{
+    background-color: black;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.socialMedia{
+    display: flex;
+    justify-content: center;
+}
+
+.imgSocialMedia{
+    width: 30px;
+}
+
+.borderSocialMedia{
+    border-radius: 50%;
+    background: #F8F9FA;
+    margin: 10px;
+    padding: 10px;
+}
+
+.pTextCreator{
+    color: #F8F9FA;
+    margin: 0%;
+    padding: 0%;
+    bottom: 0%;
+    display: inline;
+    width: fit-content;
+}
