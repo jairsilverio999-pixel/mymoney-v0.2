@@ -61,17 +61,18 @@
       </nav>
     </header>
     <!-- Inicio -->
-    <div id="screenHome" class="screen">
+    <div id="screenHome" class="screen hide">
       <main>
         <section>
-          <h1 id="welcome">Tu auxiliar en controlar tus finanzas</h1>
+          <h1 class="welcome">Tu auxiliar en controlar tus finanzas</h1>
+          <div class="shadowFooter"></div>
         </section>
       </main>
     </div>
     <!-- Registro de gastos -->
     <div id="screenExpensives" class="screen hide">
       <section id="section">
-        <h1 id="welcome">Registro de gastos</h1>
+        <h1 class="welcome">Registro de gastos</h1>
         <div id="regGastResGast" class="divideDivs">
           <form id="dataRegister">
             <div class="form">
@@ -112,12 +113,13 @@
             <button id="reset">Borrar gastos guardados</button>
           </div>
         </div>
+        <div class="shadowFooter"></div>
       </section>
     </div>
     <!-- Registro de tarjetas-->
     <div id="screenRegisterCards" class="screen hide">
       <section>
-        <h1 id="welcome">Registro de tarjetas</h1>
+        <h1 class="welcome">Registro de tarjetas</h1>
         <div class="divideDivs">
           <form id="cardRegister">
             <div class="form">
@@ -161,9 +163,28 @@
             <ul id="listCardsSaved" class="listData"></ul>
           </div>
         </div>
+        <div class="shadowFooter"></div>
       </section>
     </div>
-    <div id="screenAddCategorie" class="scree hide"></div>
+    <div id="screenAddCategorie" class="screen">
+      <section>
+        <h1 class="welcome">Registro de categorias</h1>
+        <div class="divideDivs">
+          <form action="" id="formCategories">
+            <div class="form">
+              <p>Categoria</p>
+              <input type="text" placeholder="Ej. Salud" id="categorie">
+            </div>
+            <button type="submit" class="btnSubmit">Registrar categoria</button>
+          </form>
+          <div>
+            <h3 class="headSubtitle">Categorias registradas</h3>
+            <ul id="listCategoriesSaved" class="listData"></ul>
+          </div>
+        </div>
+        <div class="shadowFooter"></div>
+      </section>
+    </div>
     <footer class="footer">
       <div class="socialMedia">
         <div class="borderSocialMedia">
@@ -186,9 +207,6 @@
             />
           </a>
         </div>
-      </div>
-      <div class="pTextCreator">
-        <p>Jair Silverio</p>
       </div>
     </footer>
   </body>
