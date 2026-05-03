@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="style/header.css" />
     <!-- Script -->
+    <script src="script/test.js" defer></script>
     <script src="script/app.js" defer></script>
   </head>
   <body>
+    <!-- Menu de navegacion y logo-->
     <header>
       <h1 id="title">
         <img src="src/img/logo-my-money-red.png" alt="Name page: My Money" />
@@ -21,7 +23,7 @@
             <img
               alt="Inicio"
               class="imgMenuNav"
-              src="src/icons/pagina-de-inicio.png"
+              src="src/icons/home.svg"
               title="Inicio"
               onclick="changeScreen('screenHome')"
           /></a>
@@ -31,7 +33,7 @@
             <img
               alt="Registro de gastos"
               class="imgMenuNav"
-              src="src/icons/save-money_8016580.png"
+              src="src/icons/attachMoney.svg"
               title="Registro de gastos"
               onclick="changeScreen('screenExpensives')"
           /></a>
@@ -41,9 +43,19 @@
             <img
               alt="Registro de tarjetas"
               class="imgMenuNav"
-              src="src/icons/add_card_512dp.png"
+              src="src/icons/addCard.svg"
               title="Registro de tarjetas"
               onclick="changeScreen('screenRegisterCards')"
+          /></a>
+        </div>
+        <div class="borderImgButton">
+          <a href="#">
+            <img
+              alt="Aniadir categoria"
+              class="imgMenuNav"
+              src="src/icons/categories.svg"
+              title="Aniadir categoria"
+              onclick="changeScreen('screenAddCategorie')"
           /></a>
         </div>
       </nav>
@@ -52,14 +64,15 @@
     <div id="screenHome" class="screen hide">
       <main>
         <section>
-          <h1 id="welcome">Tu auxiliar en controlar tus finanzas</h1>
+          <h1 class="welcome">Tu auxiliar en controlar tus finanzas</h1>
+          <div class="shadowFooter"></div>
         </section>
       </main>
     </div>
     <!-- Registro de gastos -->
     <div id="screenExpensives" class="screen hide">
       <section id="section">
-        <h1 id="welcome">Registro de gastos</h1>
+        <h1 class="welcome">Registro de gastos</h1>
         <div id="regGastResGast" class="divideDivs">
           <form id="dataRegister">
             <div class="form">
@@ -100,12 +113,13 @@
             <button id="reset">Borrar gastos guardados</button>
           </div>
         </div>
+        <div class="shadowFooter"></div>
       </section>
     </div>
     <!-- Registro de tarjetas-->
-    <div id="screenRegisterCards" class="screen">
+    <div id="screenRegisterCards" class="screen hide">
       <section>
-        <h1 id="welcome">Registro de tarjetas</h1>
+        <h1 class="welcome">Registro de tarjetas</h1>
         <div class="divideDivs">
           <form id="cardRegister">
             <div class="form">
@@ -149,9 +163,52 @@
             <ul id="listCardsSaved" class="listData"></ul>
           </div>
         </div>
+        <div class="shadowFooter"></div>
       </section>
     </div>
-    <footer>Pie de paginaa</footer>
+    <div id="screenAddCategorie" class="screen">
+      <section>
+        <h1 class="welcome">Registro de categorias</h1>
+        <div class="divideDivs">
+          <form action="" id="formCategories">
+            <div class="form">
+              <p>Categoria</p>
+              <input type="text" placeholder="Ej. Salud" id="categorie">
+            </div>
+            <button type="submit" class="btnSubmit">Registrar categoria</button>
+          </form>
+          <div>
+            <h3 class="headSubtitle">Categorias registradas</h3>
+            <ul id="listCategoriesSaved" class="listData"></ul>
+          </div>
+        </div>
+        <div class="shadowFooter"></div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="socialMedia">
+        <div class="borderSocialMedia">
+          <a href="https://github.com/jairsilverio999-pixel" target="_blank">
+            <img
+              src="src/icons/gitHub.svg"
+              alt="GitHub"
+              title="GitHub"
+              class="imgSocialMedia"
+            />
+          </a>
+        </div>
+        <div class="borderSocialMedia">
+          <a href="https://www.instagram.com/m1ch1kp/" target="_blank">
+            <img
+              src="src/icons/instaLogo.svg"
+              alt="Instagram"
+              title="Instagram"
+              class="imgSocialMedia"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 <!-- subido a github -->
