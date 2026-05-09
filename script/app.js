@@ -175,6 +175,12 @@ function createList(saveInLocalstore, list, keyObj){
                 valuesList += `$${obj[key]} - `
                 continue
             }
+            if (key === 'noCard') {
+                console.log(obj[key])
+                console.log(obj[key].match(/.{1,4}/g).join(' '))
+                valuesList += `${obj[key].match(/.{1,4}/g).join(' ')} - `
+                continue
+            }
             valuesList += `${obj[key]} - `
         }
         let leftSpan = document.createElement('span')
@@ -185,11 +191,17 @@ function createList(saveInLocalstore, list, keyObj){
         btnEdit.addEventListener('click', function(){
             editDataRegister(obj, keyObj)
         })
+        let btnDetails = document.createElement('button')
+        btnDetails.textContent = 'Detalles'
+        btnDetails.addEventListener('click', function() {
+            console.log('Detallando')
+        })
         let btnDelete = document.createElement('button')
         btnDelete.textContent = 'Eliminar'
         btnDelete.addEventListener('click', function () {
             deleteByID(obj.id, saveInLocalstore, keyObj)
         })
+        divBtnEditDelete.appendChild(btnDetails)
         divBtnEditDelete.appendChild(btnEdit)
         divBtnEditDelete.appendChild(btnDelete)
         li.appendChild(leftSpan)
