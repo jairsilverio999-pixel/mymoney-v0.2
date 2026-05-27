@@ -6,8 +6,11 @@
     <link rel="icon" href="src/icons/logo-my-money-red.png" />
     <link rel="stylesheet" href="style/style.css" />
     <link rel="stylesheet" href="style/header.css" />
-    <!-- Script -->
-    <script src="script/test.js" defer></script>
+    <!-- Scripts -->
+    <script src="script/storage.js" defer></script>
+    <script src="script/incomes.js" defer></script>
+    <script src="script/expenses.js" defer></script>
+    <script src="script/cards.js" defer></script>
     <script src="script/app.js" defer></script>
   </head>
   <body>
@@ -103,7 +106,7 @@
                 placeholder="Descripcion de ingreso"
               />
               <p>Origen de pago</p>
-              <select name="" id="cardsIncomes"></select>
+              <select name="" id="cardIncome"></select>
             </div>
             <button id="submit" type="submit" class="btnSubmit">
               Registrar ingreso
@@ -137,6 +140,7 @@
               <input id="description" type="text" placeholder="Descripcion" />
               <p>Seleccione tarjeta donde se realizo el gasto:</p>
               <select id="cardsExpenses">
+                <option value="cash">Efectivo</option>
                 <!-- Tarjetas -->
               </select>
               <p>Seleccione categoria de gasto:</p>
@@ -156,7 +160,7 @@
               Total gastado $
               <span id="totalExpensive">0</span>
             </h3>
-            <ul id="allExpensives" class="listData"></ul>
+            <ul id="listExpensesSaved" class="listData"></ul>
             <button id="reset">Borrar gastos guardados</button>
           </div>
         </div>

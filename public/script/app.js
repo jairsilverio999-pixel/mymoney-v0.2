@@ -1,114 +1,13 @@
-const formExpensives = document.getElementById('dataRegister')
-const lista = document.getElementById('allExpensives')
-const totalExpensives = document.getElementById('totalExpensive')
-const reset = document.getElementById('reset')
-const formCards = document.getElementById('cardRegister')
-const selectCardsExpenses = document.getElementById('cardsExpenses') 
-const listCardsSaved = document.getElementById('listCardsSaved')
+
 const formCategories = document.getElementById('formCategories')
 const listCategoriesSaved = document.getElementById('listCategoriesSaved')
 const selectCategories = document.getElementById('categories')
-const formIncomes = document.getElementById('formIncomes') 
-const listIncomes = document.getElementById('allIncomes')
-const selectCardsIncomes = document.getElementById('cardsIncomes')
 let idEditData = null
 
 // objetos
-let gastos = JSON.parse(localStorage.getItem('gasto')) || []
-let cards = JSON.parse(localStorage.getItem('card'))  || []
-let categories = JSON.parse(localStorage.getItem('categorie')) || []
-let incomes = JSON.parse(localStorage.getItem('income')) || []
+
 
 updateUI()
-
-// regitro de ingresos
-formIncomes.addEventListener('submit', function(e){
-    e.preventDefault()
-    let id = Date.now()
-    let income$$$ = parseFloat(document.getElementById('montIncome').value)
-    let descriptionIncome = document.getElementById('descriptionIncome').value
-    let cardIncome = document.getElementById('cards').value
-    console.log(cardIncome)
-    if (idEditData) {
-        incomes = incomes.map(income =>{
-            if (income.id === idEditData) {
-                return {...income, id:idEditData, income$$$, descriptionIncome, cardIncome}
-            }
-            return income
-        })
-        idEditData = null
-    }
-    else{
-        incomes.push({id, income$$$, descriptionIncome, cardIncome})
-    }
-    localStorage.setItem('income', JSON.stringify(incomes))
-    createList(incomes, listIncomes, 'income')
-    formIncomes.reset()
-    formIncomes.querySelector('button').textContent = 'Registrar ingreso'
-    alert('Ingreso registrado con exito')
-})
-
-// agrega opciones al menu de tarjetas de ingresos
-function menuBanksIncomes() {
-    selectCardsIncomes.innerHTML = ''
-    cards.forEach((card)=>{
-        let option = document.createElement('option')
-        option.value = card.alias
-        option.textContent = `${card.alias} (**** ${card.noCard.slice(-4)})`
-        selectCardsIncomes.appendChild(option)
-    })
-}
-
-// registro de gastos
-formExpensives.addEventListener('submit', function(e){ 
-    e.preventDefault()
-    let id = Date.now()
-    let expenditure = parseFloat(document.getElementById('montGast').value)
-    console.log(expenditure)
-    let description = document.getElementById('description').value
-    console.log(description)
-    let card = document.getElementById('cards').value
-    console.log(card)
-    let categorie = document.getElementById('categories').value
-    console.log(categorie)
-    if (idEditData) {
-        gastos = gastos.map(gasto =>{
-            if (gasto.id === idEditData) {
-                return {...gasto, id:idEditData, expenditure, description, card, categorie}
-            }
-            return gasto
-        })
-        idEditData = null
-    }
-    else{
-        gastos.push({id, expenditure, description, card, categorie})
-    }
-    localStorage.setItem('gasto', JSON.stringify(gastos))
-    console.log(gastos)
-    renderGastos()
-    formExpensives.reset()
-    formExpensives.querySelector('button').textContent = 'Registrar gasto'
-    alert('Gasto registrado con exito')
-})
-
-//Actualiza la lista de gastos y los agrega en forma de lista
-function renderGastos() { 
-    let gastoTotal = 0
-    createList(gastos, lista, 'gasto')
-    gastos.forEach(gasto =>{
-        gastoTotal += gasto.expenditure
-    })
-    totalExpensives.textContent = gastoTotal
-}
-
-// borra la lista de gastos
-reset.addEventListener("click", function(){
-    if(confirm('Seguro que desea eliminar todos los gastos?')){
-        localStorage.removeItem('gasto');
-        lista.innerHTML = ''
-        totalExpensives.textContent = ''
-    }
-})
 
 // cambio de pantalla menu
 function changeScreen(id){
@@ -118,54 +17,6 @@ function changeScreen(id){
     })
     document.getElementById(id).classList.remove('hide')
 }
-
-// registro tarjetas
-formCards.addEventListener("submit", function(e){
-    e.preventDefault()
-    let id = Date.now()
-    let alias = document.getElementById('aliasCard').value
-    let bank = document.getElementById('bank').value
-    let noCard = document.getElementById('noCard').value
-    // valida que sean numeros y que sean 16 digitos
-    if (!/^\d{16}$/.test(noCard)) {
-        alert('Numero de tarjeta deben ser 16 digitos numericos')
-        return
-    }
-    let typeCard = document.getElementById('typeCard').value
-    if (idEditData) {
-        cards = cards.map(card =>{ // edita tarjetas por id
-            if (card.id === idEditData) {
-                return {...card, id:idEditData, alias, bank, noCard, typeCard}
-            }
-            return card
-        })
-        idEditData = null
-    }
-    else{
-        cards.push({id, alias, bank, noCard, typeCard})
-    }
-    localStorage.setItem('card', JSON.stringify(cards))
-    createList(cards, listCardsSaved, 'card')
-    menuBanksExpenses()
-    menuBanksIncomes()
-    formCards.reset()
-    formCards.querySelector('button').textContent = 'Registrar tarjeta'
-    alert('Tarjeta registrada correctamente')
-})
-
-// agrega opciones al menu de bancos
-function menuBanksExpenses() {
-    selectCardsExpenses.innerHTML = ''
-    cards.forEach((card)=>{
-        let option = document.createElement('option')
-        option.value = card.alias
-        option.textContent = `${card.alias} (**** ${card.noCard.slice(-4)})`
-        selectCardsExpenses.appendChild(option)
-    })
-}
-
-// actualiza lista de tarjetas y los agrega como lista
-createList(cards, listCardsSaved, 'card')
 
 //registro categorias
 formCategories.addEventListener('submit', function(e){
@@ -282,7 +133,7 @@ function editDataRegister(objet, typeDataSaved){
         case 'gasto':
             document.getElementById('montGast').value = objet.expenditure
             document.getElementById('description').value = objet.description
-            document.getElementById('cards').value = objet.card
+            document.getElementById('cardsExpenses').value = objet.card
             document.getElementById('categories').value = objet.categorie   
             formExpensives.querySelector('button').textContent = 'Actualizar gasto'
             break;
@@ -298,7 +149,7 @@ function editDataRegister(objet, typeDataSaved){
         case 'income':
             document.getElementById('montIncome').value = objet.income$$$
             document.getElementById('descriptionIncome').value = objet.descriptionIncome
-            document.getElementById('cards').value = objet.cardIncome
+            document.getElementById('cardIncome').value = objet.cardIncome
             formIncomes.querySelector('button').textContent = 'Actualizar gasto'
         default:
             console.log(idEditData)
