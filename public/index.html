@@ -31,9 +31,19 @@
         <div class="borderImgButton">
           <a href="#">
             <img
-              alt="Registro de gastos"
+              alt="Ingresos"
               class="imgMenuNav"
               src="src/icons/attachMoney.svg"
+              title="Ingresos"
+              onclick="changeScreen('screenIncomes')"
+          /></a>
+        </div>
+        <div class="borderImgButton">
+          <a href="#">
+            <img
+              alt="Registro de gastos"
+              class="imgMenuNav"
+              src="src/icons/expense.svg"
               title="Registro de gastos"
               onclick="changeScreen('screenExpensives')"
           /></a>
@@ -69,10 +79,47 @@
         </section>
       </main>
     </div>
+    <!-- Ingresos -->
+    <div id="screenIncomes" class="screen hide">
+      <section>
+        <h1 class="welcome">Ingresos</h1>
+        <div>
+          <form id="formIncomes">
+            <div class="form">
+              <!-- Captura de ingresos -->
+              <p>Ingresa tus ingresos</p>
+              <input
+                type="number"
+                id="montIncome"
+                placeholder="Ingresos"
+                min="0"
+                step="0.01"
+              />
+              <!-- Descripcion de ingreso -->
+              <p>Descripcion</p>
+              <input
+                type="text"
+                id="descriptionIncome"
+                placeholder="Descripcion de ingreso"
+              />
+              <p>Origen de pago</p>
+              <select name="" id="cardsIncomes"></select>
+            </div>
+            <button id="submit" type="submit" class="btnSubmit">
+              Registrar ingreso
+            </button>
+          </form>
+          <div id="resumeIncomes">
+            <ul id="allIncomes" class="listData"></ul>
+          </div>
+        </div>
+        <div class="shadowFooter"></div>
+      </section>
+    </div>
     <!-- Registro de gastos -->
     <div id="screenExpensives" class="screen hide">
       <section id="section">
-        <h1 class="welcome">Registro de gastos</h1>
+        <h1 class="welcome">Gastos</h1>
         <div id="regGastResGast" class="divideDivs">
           <form id="dataRegister">
             <div class="form">
@@ -89,7 +136,7 @@
               <p>Ingresa descripcion del gasto:</p>
               <input id="description" type="text" placeholder="Descripcion" />
               <p>Seleccione tarjeta donde se realizo el gasto:</p>
-              <select id="cards">
+              <select id="cardsExpenses">
                 <!-- Tarjetas -->
               </select>
               <p>Seleccione categoria de gasto:</p>
@@ -119,7 +166,7 @@
     <!-- Registro de tarjetas-->
     <div id="screenRegisterCards" class="screen hide">
       <section>
-        <h1 class="welcome">Registro de tarjetas</h1>
+        <h1 class="welcome">Tarjetas</h1>
         <div class="divideDivs">
           <form id="cardRegister">
             <div class="form">
@@ -166,14 +213,15 @@
         <div class="shadowFooter"></div>
       </section>
     </div>
+    <!-- Registro de categorias-->
     <div id="screenAddCategorie" class="screen hide">
       <section>
-        <h1 class="welcome">Registro de categorias</h1>
+        <h1 class="welcome">Categorias</h1>
         <div class="divideDivs">
           <form action="" id="formCategories">
             <div class="form">
               <p>Categoria</p>
-              <input type="text" placeholder="Ej. Salud" id="categorie">
+              <input type="text" placeholder="Ej. Salud" id="categorie" />
             </div>
             <button type="submit" class="btnSubmit">Registrar categoria</button>
           </form>

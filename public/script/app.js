@@ -3,20 +3,61 @@ const lista = document.getElementById('allExpensives')
 const totalExpensives = document.getElementById('totalExpensive')
 const reset = document.getElementById('reset')
 const formCards = document.getElementById('cardRegister')
-const selectCards = document.getElementById('cards') 
+const selectCardsExpenses = document.getElementById('cardsExpenses') 
 const listCardsSaved = document.getElementById('listCardsSaved')
 const formCategories = document.getElementById('formCategories')
 const listCategoriesSaved = document.getElementById('listCategoriesSaved')
 const selectCategories = document.getElementById('categories')
+const formIncomes = document.getElementById('formIncomes') 
+const listIncomes = document.getElementById('allIncomes')
+const selectCardsIncomes = document.getElementById('cardsIncomes')
 let idEditData = null
 
 // objetos
 let gastos = JSON.parse(localStorage.getItem('gasto')) || []
 let cards = JSON.parse(localStorage.getItem('card'))  || []
-console.log(cards)
 let categories = JSON.parse(localStorage.getItem('categorie')) || []
+let incomes = JSON.parse(localStorage.getItem('income')) || []
 
 updateUI()
+
+// regitro de ingresos
+formIncomes.addEventListener('submit', function(e){
+    e.preventDefault()
+    let id = Date.now()
+    let income$$$ = parseFloat(document.getElementById('montIncome').value)
+    let descriptionIncome = document.getElementById('descriptionIncome').value
+    let cardIncome = document.getElementById('cards').value
+    console.log(cardIncome)
+    if (idEditData) {
+        incomes = incomes.map(income =>{
+            if (income.id === idEditData) {
+                return {...income, id:idEditData, income$$$, descriptionIncome, cardIncome}
+            }
+            return income
+        })
+        idEditData = null
+    }
+    else{
+        incomes.push({id, income$$$, descriptionIncome, cardIncome})
+    }
+    localStorage.setItem('income', JSON.stringify(incomes))
+    createList(incomes, listIncomes, 'income')
+    formIncomes.reset()
+    formIncomes.querySelector('button').textContent = 'Registrar ingreso'
+    alert('Ingreso registrado con exito')
+})
+
+// agrega opciones al menu de tarjetas de ingresos
+function menuBanksIncomes() {
+    selectCardsIncomes.innerHTML = ''
+    cards.forEach((card)=>{
+        let option = document.createElement('option')
+        option.value = card.alias
+        option.textContent = `${card.alias} (**** ${card.noCard.slice(-4)})`
+        selectCardsIncomes.appendChild(option)
+    })
+}
 
 // registro de gastos
 formExpensives.addEventListener('submit', function(e){ 
@@ -35,7 +76,7 @@ formExpensives.addEventListener('submit', function(e){
             if (gasto.id === idEditData) {
                 return {...gasto, id:idEditData, expenditure, description, card, categorie}
             }
-            return card
+            return gasto
         })
         idEditData = null
     }
@@ -44,14 +85,14 @@ formExpensives.addEventListener('submit', function(e){
     }
     localStorage.setItem('gasto', JSON.stringify(gastos))
     console.log(gastos)
-    render()
+    renderGastos()
     formExpensives.reset()
     formExpensives.querySelector('button').textContent = 'Registrar gasto'
     alert('Gasto registrado con exito')
 })
 
 //Actualiza la lista de gastos y los agrega en forma de lista
-function render() { 
+function renderGastos() { 
     let gastoTotal = 0
     createList(gastos, lista, 'gasto')
     gastos.forEach(gasto =>{
@@ -92,7 +133,7 @@ formCards.addEventListener("submit", function(e){
     }
     let typeCard = document.getElementById('typeCard').value
     if (idEditData) {
-        cards = cards.map(card =>{
+        cards = cards.map(card =>{ // edita tarjetas por id
             if (card.id === idEditData) {
                 return {...card, id:idEditData, alias, bank, noCard, typeCard}
             }
@@ -105,20 +146,21 @@ formCards.addEventListener("submit", function(e){
     }
     localStorage.setItem('card', JSON.stringify(cards))
     createList(cards, listCardsSaved, 'card')
-    menuBanks()
+    menuBanksExpenses()
+    menuBanksIncomes()
     formCards.reset()
     formCards.querySelector('button').textContent = 'Registrar tarjeta'
     alert('Tarjeta registrada correctamente')
 })
 
 // agrega opciones al menu de bancos
-function menuBanks() {
-    selectCards.innerHTML = ''
+function menuBanksExpenses() {
+    selectCardsExpenses.innerHTML = ''
     cards.forEach((card)=>{
         let option = document.createElement('option')
         option.value = card.alias
         option.textContent = `${card.alias} (**** ${card.noCard.slice(-4)})`
-        selectCards.appendChild(option)
+        selectCardsExpenses.appendChild(option)
     })
 }
 
@@ -171,7 +213,7 @@ function createList(saveInLocalstore, list, keyObj){
         let valuesList = ""
         for (key in obj){
             if (key === 'id') continue
-            if (key === 'expenditure') {
+            if (key === 'expenditure' || key === 'income$$$') {
                 valuesList += `$${obj[key]} - `
                 continue
             }
@@ -215,11 +257,14 @@ function updateUI() {
     gastos = JSON.parse(localStorage.getItem('gasto')) || []
     cards = JSON.parse(localStorage.getItem('card'))  || []
     categories = JSON.parse(localStorage.getItem('categorie')) || []
-    render()
-    menuBanks()
+    incomes = JSON.parse(localStorage.getItem('income')) || []
+    renderGastos()
+    menuBanksExpenses()
+    menuBanksIncomes()
     menuCategories()
     createList(cards, listCardsSaved, 'card')
     createList(categories, listCategoriesSaved, 'categorie')
+    createList(incomes, listIncomes, 'income')
 }
 
 // borra objeto por ID
@@ -250,6 +295,11 @@ function editDataRegister(objet, typeDataSaved){
         case 'categorie':
             document.getElementById('categorie').value = objet.category 
             formCategories.querySelector('button').textContent = 'Actualizar gasto'
+        case 'income':
+            document.getElementById('montIncome').value = objet.income$$$
+            document.getElementById('descriptionIncome').value = objet.descriptionIncome
+            document.getElementById('cards').value = objet.cardIncome
+            formIncomes.querySelector('button').textContent = 'Actualizar gasto'
         default:
             console.log(idEditData)
             break;
