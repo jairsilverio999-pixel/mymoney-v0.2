@@ -30,7 +30,7 @@ formExpensives.addEventListener('submit', function(e){
     alert('Gasto registrado con exito');
 });
 
-//Actualiza la lista de gastos y los agrega en forma de lista
+// Actualiza la lista de gastos y los agrega en forma de lista
 function renderGastos() { 
     let gastoTotal = 0;
     createList(gastos, listExpensesSaved, 'gasto');
